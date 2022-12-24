@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+HOME
+{% endblock title %}
+
+{% block content %}
+<h1>Weather</h1>
+<img src="{{ icon_url }}" alt=""> <!-- {{ icon_url }}-->
+{% if weather %}
+    {% for element in weather %}
+        {% for key, value in element.items %}
+            {% if key == 'main' %}
+                <p>{{ value }}</p>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+<form method="post" action="/">
+    {% csrf_token %}
+    {{ form.city }}
+    {{ form.language_choice }}
+    <input type="submit" value="Check the weather in the city">
+</form>
+
+{% endblock content %}
