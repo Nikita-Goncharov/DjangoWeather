@@ -1,19 +1,25 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block head %}{% endblock head %}
     <title>{% block title %}{% endblock title%}</title>
 </head>
+
 <body>
     <div class="wrapper">
         <header>
             <a href="{% url 'main' %}">Головна</a> | <a href="{% url 'newsletter' %}">Розсилка у телеграм</a>
         </header>
-        {% block content %}
-        {% endblock content %}
+        <main>
+            {% block content %}{% endblock content %}
+        </main>
     </div>
 </body>
+
 </html>

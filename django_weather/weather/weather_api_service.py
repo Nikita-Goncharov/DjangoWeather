@@ -1,23 +1,36 @@
 import requests 
-from typing import Optional
 from django.conf import settings
 
 api_key = settings.API_KEY
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
 
 
-def get_current_weather_json_in_city(city_name: str, language_code: str) -> dict:
+def get_weather_json_with_all_info_in_city(city_name: str, language_code: str) -> dict:
     complete_url = f'{base_url}appid={api_key}&q={city_name}&lang={language_code}'
-    try:
+    
+    try: 
         response = requests.get(complete_url).json()
-    except: 
+        icon_url = _get_weather_icon_for_display_on_page(response['weather'][0]['icon'])
+    except:
         return {'success': False}
+    necessary_weather_info = _get_necessary_weather_info(response)
+    necessary_weather_info.update({'success': True, 'icon_url': icon_url})
 
-    icon_url = _get_weather_icon_for_display_on_page(response['weather'][0]['icon'])
-    response.update({'success': True, 'icon_url': icon_url})
-    return response
+    return necessary_weather_info
 
 
 def _get_weather_icon_for_display_on_page(icon_code: str) -> str:
     icon_url = f"http://openweathermap.org/img/w/{icon_code}.png"
     return icon_url
+
+
+def _get_necessary_weather_info(weather_json:str) -> dict:
+    necessary_info = {
+        'weather_name': weather_json['weather'][0]['main'],
+        'weather_description': weather_json['weather'][0]['description'].capitalize(),
+        'temp': weather_json['main']['temp'],
+        'temp_feels_like': weather_json['main']['feels_like'],
+        'wind_speed': weather_json['wind']['speed'],  
+    }
+    return necessary_info
+

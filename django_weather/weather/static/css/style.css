@@ -1,0 +1,17 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+main {
+    text-align: center;
+}
+
+header {
+    padding: 20px;
+}
+
+header a {
+    padding: 10px 15px;
+    background-color: antiquewhite;
+}

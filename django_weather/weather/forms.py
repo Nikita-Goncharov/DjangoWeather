@@ -51,4 +51,4 @@ lang_choice = (
 
 class WeatherForm(forms.Form):
     city = forms.CharField(max_length=200, widget=forms.TextInput(attrs={'placeholder': 'City', 'class': 'city_input'}))
-    language_choice = forms.ChoiceField(choices=lang_choice)
+    language_choice = forms.ChoiceField(choices=lang_choice, widget=forms.Select(attrs={'class': 'language_choice'}))

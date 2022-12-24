@@ -12,21 +12,23 @@ Weather
 
 {% block content %}
 <h1>Weather</h1>
-<img src="{{ icon_url }}" alt="Weather icon">
-{% if weather %}
-    {% for element in weather %}
-        {% for key, value in element.items %}
-            {% if key == 'main' %}
-                <p>{{ value }}</p>
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
-{% endif %}
 <form method="post" action="/">
     {% csrf_token %}
-    {{ form.city }}
-    {{ form.language_choice }}
-    <input type="submit" value="Check the weather in the city">
+    <div>{{ form.city }}</div>
+    <div>{{ form.language_choice }}</div>
+    <div><button type="submit">Check the weather in the city</button></div>
 </form>
 
+<div class="weather_card">
+    {% if not weather_error %}
+    <img src="{{ city_weather.icon_url }}" alt="Weather icon">
+    <p>{{ city_weather.weather_name }}</p>
+    <p>{{ city_weather.weather_description }}</p>
+    <p>{{ city_weather.temp }}</p>
+    <p>{{ city_weather.temp_feels_like }}</p>
+    <p>{{ city_weather.wind_speed }}</p>
+    {% else %}
+    <p>Error</p> <!--TODO: Більш красиво вивести помилку-->
+    {% endif %}
+</div>
 {% endblock content %}
