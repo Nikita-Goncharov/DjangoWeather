@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block title %}
-HOME
+Weather
 {% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock head %}
 
 {% block content %}
 <h1>Weather</h1>
-<img src="{{ icon_url }}" alt=""> <!-- {{ icon_url }}-->
+<img src="{{ icon_url }}" alt="Weather icon">
 {% if weather %}
     {% for element in weather %}
         {% for key, value in element.items %}

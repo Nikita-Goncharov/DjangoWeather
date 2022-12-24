@@ -6,7 +6,6 @@ api_key = settings.API_KEY
 base_url = "http://api.openweathermap.org/data/2.5/weather?"
 
 
-
 def get_current_weather_json_in_city(city_name: str, language_code: str) -> dict:
     complete_url = f'{base_url}appid={api_key}&q={city_name}&lang={language_code}'
     try:
@@ -15,9 +14,7 @@ def get_current_weather_json_in_city(city_name: str, language_code: str) -> dict
         return {'success': False}
 
     icon_url = _get_weather_icon_for_display_on_page(response['weather'][0]['icon'])
-    # print(response, icon_url)
     response.update({'success': True, 'icon_url': icon_url})
-    print(response)
     return response
 
 
