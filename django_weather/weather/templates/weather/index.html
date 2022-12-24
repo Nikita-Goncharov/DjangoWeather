@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Weather
+{% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock head %}
+
+{% block content %}
+<h1>Weather</h1>
+<img src="{{ icon_url }}" alt="Weather icon">
+{% if weather %}
+    {% for element in weather %}
+        {% for key, value in element.items %}
+            {% if key == 'main' %}
+                <p>{{ value }}</p>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+<form method="post" action="/">
+    {% csrf_token %}
+    {{ form.city }}
+    {{ form.language_choice }}
+    <input type="submit" value="Check the weather in the city">
+</form>
+
+{% endblock content %}
