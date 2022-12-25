@@ -1,22 +1,104 @@
+.weather_block {
+    width: 23%;
+    margin: 70px auto;
+}
+
 form .language_choice,
 .city_input,
 button {
     margin: 10px 0;
-    width: 20%;
-    padding: 10px 15px;
+    width: 100%;
+    padding: 15px 15px;
+}
+
+.language_choice:focus,
+.city_input:focus {
+    outline: none;
 }
 
 .city_input {
     text-indent: 15px;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
 form button {
     border: none;
     background-color: #4c6dce;
+    color: #fff;
+}
+
+form button:hover {
+    background-color: #193ba1;
 }
 
 img {
     width: 200px;
     height: auto;
+}
+
+
+
+@media screen and (min-width: 1500px) and (max-width: 1660px) {
+    .weather_block {
+        width: 25%;
+    }
+}
+
+@media screen and (min-width: 1400px) and (max-width: 1500px) {
+    .weather_block {
+        width: 30%;
+    }
+}
+
+
+@media screen and (min-width: 1300px) and (max-width: 1400px) {
+    .weather_block {
+        width: 35%;
+    }
+}
+
+@media screen and (min-width: 1100px) and (max-width: 1300px) {
+    .weather_block {
+        width: 40%;
+    }
+}
+
+
+
+@media screen and (min-width: 900px) and (max-width: 1100px) {
+    .weather_block {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 900px) {
+    .weather_block {
+        width: 60%;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 700px) {
+    .weather_block {
+        width: 70%;
+    }
+}
+
+
+
+@media screen and (min-width: 500px) and (max-width: 600px) {
+    .weather_block {
+        width: 75%;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 500px) {
+    .weather_block {
+        width: 85%;
+    }
+}
+
+@media screen and (min-width: 350px) and (max-width: 400px) {
+    .weather_block {
+        width: 97%;
+    }
 }
