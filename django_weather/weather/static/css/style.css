@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+main {
+    text-align: center;
+}
+
+header {
+    padding: 20px;
+    background-color: #8888ff;
+}
+
+header a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    transition: .2s;
+}
+
+header a:hover {
+    background-color: #ffffff;
+}

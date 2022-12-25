@@ -11,22 +11,32 @@ Weather
 {% endblock head %}
 
 {% block content %}
-<h1>Weather</h1>
-<img src="{{ icon_url }}" alt="Weather icon">
-{% if weather %}
-    {% for element in weather %}
-        {% for key, value in element.items %}
-            {% if key == 'main' %}
-                <p>{{ value }}</p>
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
-{% endif %}
-<form method="post" action="/">
-    {% csrf_token %}
-    {{ form.city }}
-    {{ form.language_choice }}
-    <input type="submit" value="Check the weather in the city">
-</form>
+<div class="weather_block">
+    <h1>Weather</h1>
+    <form method="post" action="/">
+        {% csrf_token %}
+        {{ form.city }}
+        {{ form.language_choice }}
+        <button type="submit">Check the weather in the city</button>
+    </form>
+
+
+    {% if not weather_error and weather_error != None %}
+    <div class="weather_card">
+        <div class="weather_icon">
+            <img class="" src="{{ city_weather.icon_url }}" alt="Weather icon">
+        </div>
+        <div class="details">
+            <p>Weather: {{ city_weather.weather_name }}</p>
+            <p>Description: {{ city_weather.weather_description }}</p>
+            <p>Temperature: {{ city_weather.temp }}</p>
+            <p>Temperature feels like: {{ city_weather.temp_feels_like }}</p>
+            <p>Wind speed: {{ city_weather.wind_speed }}</p>
+        </div>
+    </div>
+    {% elif weather_error %}
+    <p class="error_message">Error</p> <!--TODO: Більш красиво вивести помилку-->
+    {% endif %}
+</div>
 
 {% endblock content %}
