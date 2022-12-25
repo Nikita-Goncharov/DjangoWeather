@@ -12,18 +12,17 @@ main {
 
 header {
     padding: 20px;
-    background-color: #5050f4;
+    background-color: #8888ff;
 }
 
 header a {
     padding: 10px 15px;
-    background-color: antiquewhite;
     text-decoration: none;
     color: #000;
     font-weight: 500;
+    transition: .2s;
 }
 
-header a {
-    padding: 10px 15px;
-    background-color: antiquewhite;
+header a:hover {
+    background-color: #ffffff;
 }

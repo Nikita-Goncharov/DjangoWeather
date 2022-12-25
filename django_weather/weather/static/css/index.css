@@ -25,18 +25,41 @@ form button {
     border: none;
     background-color: #4c6dce;
     color: #fff;
+    font-size: medium;
+    font-weight: 500;
 }
 
 form button:hover {
     background-color: #193ba1;
 }
 
-img {
-    width: 200px;
-    height: auto;
+.error_message {
+    padding: 10px 20px;
+    background-color: #ff7c72;
+    color: #a40b00;
 }
 
+.weather_card {
+    border: #4c6dce solid 1px;
+    background-color: #abc0ff;
+    height: auto;
+    display: flex;
+    padding: 10px 20px;
+}
 
+.weather_icon {
+    height: auto;
+    text-align: center;
+    flex: 1;
+}
+
+.weather_icon img {
+    width: 100px;
+}
+
+.details {
+    text-align: left;
+}
 
 @media screen and (min-width: 1500px) and (max-width: 1660px) {
     .weather_block {
@@ -50,7 +73,6 @@ img {
     }
 }
 
-
 @media screen and (min-width: 1300px) and (max-width: 1400px) {
     .weather_block {
         width: 35%;
@@ -62,8 +84,6 @@ img {
         width: 40%;
     }
 }
-
-
 
 @media screen and (min-width: 900px) and (max-width: 1100px) {
     .weather_block {
@@ -82,8 +102,6 @@ img {
         width: 70%;
     }
 }
-
-
 
 @media screen and (min-width: 500px) and (max-width: 600px) {
     .weather_block {

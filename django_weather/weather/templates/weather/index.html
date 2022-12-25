@@ -15,23 +15,28 @@ Weather
     <h1>Weather</h1>
     <form method="post" action="/">
         {% csrf_token %}
-        <div>{{ form.city }}</div>
-        <div>{{ form.language_choice }}</div>
-        <div><button type="submit">Check the weather in the city</button></div>
+        {{ form.city }}
+        {{ form.language_choice }}
+        <button type="submit">Check the weather in the city</button>
     </form>
 
+
+    {% if not weather_error and weather_error != None %}
     <div class="weather_card">
-        {% if not weather_error %}
-        <img src="{{ city_weather.icon_url }}" alt="Weather icon">
-        <p>{{ city_weather.weather_name }}</p>
-        <p>{{ city_weather.weather_description }}</p>
-        <p>{{ city_weather.temp }}</p>
-        <p>{{ city_weather.temp_feels_like }}</p>
-        <p>{{ city_weather.wind_speed }}</p>
-        {% else %}
-        <p>Error</p> <!--TODO: Більш красиво вивести помилку-->
-        {% endif %}
+        <div class="weather_icon">
+            <img class="" src="{{ city_weather.icon_url }}" alt="Weather icon">
+        </div>
+        <div class="details">
+            <p>Weather: {{ city_weather.weather_name }}</p>
+            <p>Description: {{ city_weather.weather_description }}</p>
+            <p>Temperature: {{ city_weather.temp }}</p>
+            <p>Temperature feels like: {{ city_weather.temp_feels_like }}</p>
+            <p>Wind speed: {{ city_weather.wind_speed }}</p>
+        </div>
     </div>
+    {% elif weather_error %}
+    <p class="error_message">Error</p> <!--TODO: Більш красиво вивести помилку-->
+    {% endif %}
 </div>
 
 {% endblock content %}
